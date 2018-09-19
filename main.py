@@ -14,8 +14,8 @@ def validar_vitoria_maquina(placar):
 
 def exibir_placar(placar):
     print('------ PLACAR ------')
-    print('Jogador => ' + str(placar[0]))
-    print('Máquina => ' + str(placar[1]))
+    print('  Jogador: ' + str(placar[0]))
+    print('  Máquina: ' + str(placar[1]))
     print('--------------------')
 
 def tratar_escolha(escolha):
@@ -26,6 +26,9 @@ def tratar_escolha(escolha):
 opcoes = ['0', '1', '2']
 
 jogar_novamente = True
+
+# placar[0] = pontuação do jogador
+#placar[1] = pontuação do computador
 placar = [0, 0]
 
 while jogar_novamente:
@@ -37,7 +40,7 @@ while jogar_novamente:
     print('[ 1 ] - PAPEL')
     print('[ 2 ] - TESOURA')
 
-    escolha_usuario = input('')
+    escolha_usuario = input('Sua escolha é: ')
 
     if escolha_usuario not in opcoes:
         print('Escolha inválida')
@@ -52,8 +55,10 @@ while jogar_novamente:
     print('PO!!')
     time.sleep(0.6)
 
+    print('')
     print('Sua escolha foi: ' + tratar_escolha(str(escolha_usuario)))
     print('A escolha da máquina foi: ' + tratar_escolha(str(escolha_maquina)))
+    print('')
         
     if escolha_usuario == '0' and escolha_maquina == '0':
         validar_empate(placar)
@@ -74,14 +79,18 @@ while jogar_novamente:
     elif escolha_usuario == '2' and escolha_maquina == '1':
         validar_vitoria_jogador(placar)
 
-    resposta_jogar_novamente = input('Deseja jogar novamente? [s/n]')
+    print('')
+    resposta_jogar_novamente = (input('Deseja jogar novamente? [s/n]: ')).lower()
 
-    if resposta_jogar_novamente not in ['s', 'n', 'S', 'N']:
-        print('Escolha inválida')
+    if resposta_jogar_novamente not in ['s', 'n']:
+        print('Escolha inválida. O jogo será finalizado')
         jogar_novamente = False
 
     if resposta_jogar_novamente.lower() == 'n':
         jogar_novamente = False
 
 print('Obrigado por jogar!!')
+print(' ')
+print('O placar final foi: ')
 exibir_placar(placar)
+print('')
