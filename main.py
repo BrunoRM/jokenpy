@@ -66,12 +66,7 @@ while continuar_jogando:
     
     jogar_novamente = (input('\nDeseja jogar novamente? [s/n]: ')).lower()
 
-    if jogar_novamente not in ['s', 'n']:
-        print('Escolha inválida. O jogo será finalizado...')        
-        continuar_jogando = False
-
-    if jogar_novamente.lower() == 'n':
-        continuar_jogando = False
+    continuar_jogando = False if (jogar_novamente not in ['s', 'n'] or jogar_novamente.lower() == 'n') else True
 
 print('\nObrigado por jogar!!\n')
 exibir_placar(placar)
