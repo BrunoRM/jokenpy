@@ -31,13 +31,13 @@ while continuar_jogando:
         print(f'[ {key} ] - {opcoes[key]}')
     print('-------------------------------------------')
 
-    escolha_usuario = input('Sua escolha é: ')
+    escolha_jogador = input('Sua escolha é: ')
 
-    if escolha_usuario not in opcoes:
+    if escolha_jogador not in opcoes:
         print('Escolha inválida')
         continue
 
-    escolha_usuario = opcoes[escolha_usuario]
+    escolha_jogador = opcoes[escolha_jogador]
     escolha_cpu = opcoes[str(random.randrange(len(opcoes)))]
 
     print('\nJO')
@@ -46,22 +46,22 @@ while continuar_jogando:
     time.sleep(0.5)
     print('PO!!!!\n')
 
-    print(f'Sua escolha foi: {escolha_usuario}')
+    print(f'Sua escolha foi: {escolha_jogador}')
     print(f'A escolha da CPU foi: {escolha_cpu}\n')
         
-    if escolha_usuario == escolha_cpu:
+    if escolha_jogador == escolha_cpu:
         validar_empate(placar)        
-    elif escolha_usuario == 'PEDRA' and escolha_cpu == 'PAPEL':
+    elif escolha_jogador == 'PEDRA' and escolha_cpu == 'PAPEL':
         validar_vitoria_cpu(placar)        
-    elif escolha_usuario == 'PEDRA' and escolha_cpu == 'TESOURA':
+    elif escolha_jogador == 'PEDRA' and escolha_cpu == 'TESOURA':
         validar_vitoria_jogador(placar)        
-    elif escolha_usuario == 'PAPEL' and escolha_cpu == 'PEDRA':
+    elif escolha_jogador == 'PAPEL' and escolha_cpu == 'PEDRA':
         validar_vitoria_jogador(placar)        
-    elif escolha_usuario == 'PAPEL' and escolha_cpu == 'TESOURA':
+    elif escolha_jogador == 'PAPEL' and escolha_cpu == 'TESOURA':
         validar_vitoria_cpu(placar)        
-    elif escolha_usuario == 'TESOURA' and escolha_cpu == 'PEDRA':
+    elif escolha_jogador == 'TESOURA' and escolha_cpu == 'PEDRA':
         validar_vitoria_cpu(placar)        
-    elif escolha_usuario == 'TESOURA' and escolha_cpu == 'PAPEL':
+    elif escolha_jogador == 'TESOURA' and escolha_cpu == 'PAPEL':
         validar_vitoria_jogador(placar)
     
     jogar_novamente = (input('\nDeseja jogar novamente? [s/n]: ')).lower()
