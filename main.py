@@ -59,22 +59,18 @@ while jogar_novamente:
     print('A escolha da máquina foi: ' + tratar_escolha(str(escolha_maquina)))
     print('')
         
-    if escolha_usuario == '0' and escolha_maquina == '0':
-        validar_empate(placar)
+    if escolha_usuario == escolha_maquina:
+        validar_empate(placar)        
     elif escolha_usuario == '0' and escolha_maquina == '1':
-        validar_vitoria_maquina(placar)
+        validar_vitoria_maquina(placar)        
     elif escolha_usuario == '0' and escolha_maquina == '2':
-        validar_vitoria_jogador(placar)
-    elif escolha_usuario == '1' and escolha_maquina == '1':
-        validar_empate(placar)
+        validar_vitoria_jogador(placar)        
     elif escolha_usuario == '1' and escolha_maquina == '0':
-        validar_vitoria_jogador(placar)
+        validar_vitoria_jogador(placar)        
     elif escolha_usuario == '1' and escolha_maquina == '2':
-        validar_vitoria_maquina(placar)
-    elif escolha_usuario == '2' and escolha_maquina == '2':
-        validar_empate(placar)
+        validar_vitoria_maquina(placar)        
     elif escolha_usuario == '2' and escolha_maquina == '0':
-        validar_vitoria_maquina(placar)
+        validar_vitoria_maquina(placar)        
     elif escolha_usuario == '2' and escolha_maquina == '1':
         validar_vitoria_jogador(placar)
 
