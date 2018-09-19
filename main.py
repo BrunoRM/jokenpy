@@ -8,23 +8,24 @@ def validar_vitoria_jogador(placar):
     print('PARABÉNS, VOCÊ VENCEU!! :D')
     placar['jogador'] += 1
 
-def validar_vitoria_maquina(placar):
-    print('O COMPUTADOR VENCEU :(')
-    placar['computador'] += 1
+def validar_vitoria_cpu(placar):
+    print('A CPU VENCEU :(')
+    placar['cpu'] += 1
 
 def exibir_placar(placar):
     print('------ PLACAR ------')
     print('  Jogador: ' + str(placar['jogador']))
-    print('  Computador: ' + str(placar['computador']))
+    print('  CPU: ' + str(placar['cpu']))
     print('--------------------')
     
 opcoes = {'0': 'PEDRA', '1': 'PAPEL', '2': 'TESOURA'}
-placar = {'jogador': 0, 'computador': 0}
+placar = {'jogador': 0, 'cpu': 0}
+continuar_jogando = True
 
-while True:
+exibir_placar(placar)
+
+while continuar_jogando:
         
-    exibir_placar(placar)
-    
     print('------ ESCOLHA UMA DAS OPÇÕES ABAIXO ------')
     for key in opcoes:
         print(f'[ {key} ] - {opcoes[key]}')
@@ -37,7 +38,7 @@ while True:
         continue
 
     escolha_usuario = opcoes[escolha_usuario]
-    escolha_maquina = opcoes[str(random.randrange(len(opcoes)))]
+    escolha_cpu = opcoes[str(random.randrange(len(opcoes)))]
 
     print('\nJO')
     time.sleep(0.5)
@@ -46,31 +47,31 @@ while True:
     print('PO!!!!\n')
 
     print(f'Sua escolha foi: {escolha_usuario}')
-    print(f'A escolha do computador foi: {escolha_maquina}\n')
+    print(f'A escolha da CPU foi: {escolha_cpu}\n')
         
-    if escolha_usuario == escolha_maquina:
+    if escolha_usuario == escolha_cpu:
         validar_empate(placar)        
-    elif escolha_usuario == 'PEDRA' and escolha_maquina == 'PAPEL':
-        validar_vitoria_maquina(placar)        
-    elif escolha_usuario == 'PEDRA' and escolha_maquina == 'TESOURA':
+    elif escolha_usuario == 'PEDRA' and escolha_cpu == 'PAPEL':
+        validar_vitoria_cpu(placar)        
+    elif escolha_usuario == 'PEDRA' and escolha_cpu == 'TESOURA':
         validar_vitoria_jogador(placar)        
-    elif escolha_usuario == 'PAPEL' and escolha_maquina == 'PEDRA':
+    elif escolha_usuario == 'PAPEL' and escolha_cpu == 'PEDRA':
         validar_vitoria_jogador(placar)        
-    elif escolha_usuario == 'PAPEL' and escolha_maquina == 'TESOURA':
-        validar_vitoria_maquina(placar)        
-    elif escolha_usuario == 'TESOURA' and escolha_maquina == 'PEDRA':
-        validar_vitoria_maquina(placar)        
-    elif escolha_usuario == 'TESOURA' and escolha_maquina == 'PAPEL':
+    elif escolha_usuario == 'PAPEL' and escolha_cpu == 'TESOURA':
+        validar_vitoria_cpu(placar)        
+    elif escolha_usuario == 'TESOURA' and escolha_cpu == 'PEDRA':
+        validar_vitoria_cpu(placar)        
+    elif escolha_usuario == 'TESOURA' and escolha_cpu == 'PAPEL':
         validar_vitoria_jogador(placar)
     
-    resposta_jogar_novamente = (input('\nDeseja jogar novamente? [s/n]: ')).lower()
+    jogar_novamente = (input('\nDeseja jogar novamente? [s/n]: ')).lower()
 
-    if resposta_jogar_novamente not in ['s', 'n']:
+    if jogar_novamente not in ['s', 'n']:
         print('Escolha inválida. O jogo será finalizado...')        
-        break
+        continuar_jogando = False
 
-    if resposta_jogar_novamente.lower() == 'n':
-        break
+    if jogar_novamente.lower() == 'n':
+        continuar_jogando = False
 
 print('\nObrigado por jogar!!\n')
 exibir_placar(placar)
